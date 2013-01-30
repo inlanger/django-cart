@@ -53,10 +53,7 @@ class Cart:
         self.pre_cart_add_signal.send(sender = self, cart = self.cart, product = product, unit_price = unit_price, quantity = quantity)
 
         # try to get valid quantity value
-        try:
-            quantity = int(quantity)
-        except:
-            quantity = 1
+        quantity = int(quantity) if str(quantity).isdigit() else 1
 
         try:
             item = models.Item.objects.get(
