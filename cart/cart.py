@@ -105,5 +105,5 @@ class Cart:
         self.pre_cart_checkout_signal.send(sender = self, cart = self.cart)
         self.cart.checked_out = True
         self.cart.save()
-        return True
         self.pre_cart_checkout_signal.send(sender = self)
+        return True
